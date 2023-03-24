@@ -29,7 +29,7 @@ const Compare = () => {
       availability,
       color,
       size,
-      link,
+      // link,
     } = item;
     return (
       <div className=" group flex flex-col w-full justify-self-start ">

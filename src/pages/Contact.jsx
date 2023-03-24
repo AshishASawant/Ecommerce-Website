@@ -13,6 +13,7 @@ const Contact = () => {
       <div className="max-w-[1450px] w-full p-4 grid place-items-center gap-10 mt-5">
         <div className="w-full bg-white">
           <iframe
+          title="CSMU"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.590941534853!2d73.17435131407531!3d18.949491960862872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc0f193838693d7%3A0x786832be24ddaffb!2sChhatrapati%20Shivaji%20Maharaj%20University!5e0!3m2!1sen!2sin!4v1679500862424!5m2!1sen!2sin"
             width="600"
             height="450"

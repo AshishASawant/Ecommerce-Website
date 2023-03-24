@@ -14,7 +14,7 @@ const Productcard = ({img,brand,title,rating,price}) => {
         <h2 className=' font-medium overflow-clip line-clamp-2'>{title}</h2>
         <ReactStars size={25} value={Number(rating)} edit={false} />
         <p className='font-normal flex'>{price}</p>
-      <Link><img src='images/wish.svg' className='absolute top-3 right-3' /></Link>
+      <Link><img src='images/wish.svg' alt='wish' className='absolute top-3 right-3' /></Link>
       <div className='absolute flex right-3 translate-x-8  top-9 flex-col gap-2 hidden-div'>
       <Link><img src='images/prodcompare.svg' alt='something' /></Link>
       <Link><img src='images/view.svg' alt='something' /></Link>
