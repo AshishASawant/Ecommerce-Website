@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f5f5f9;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+.hover-img:hover .hidden-div{
+    transform: translateX(-.1rem);
+    transition: .3s;
+}
+
+
+.sp-card:nth-child(1){
+    color:white
+}
+div ::-webkit-scrollbar{
+    width: 5px;
+}
+div ::-webkit-scrollbar-thumb{
+    background-color:rgb(176, 176, 176);
+    border-radius: 20px;
+}
+.hide{
+    transform: translateX(0%);
+}
+.blog-card:hover img{
+    transform: scale(1.05);
+}
