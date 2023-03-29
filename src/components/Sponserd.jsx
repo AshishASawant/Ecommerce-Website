@@ -32,7 +32,7 @@ const Sponserd = () => {
     const { title, subtitle, desc, img } = props.item;
     return (
       <div
-        className="bg-center bg-[length:100%_100%] rounded-md  sm:px-6 px-2 pt-8 h-[26rem] flex flex-col gap-1 bg-no-repeat text-black sp-card hover:bg-[length:110%_110%] transition-all duration-200 ease-linear"
+        className="bg-center bg-bg-secondary bg-[length:100%_100%] rounded-md  sm:px-6 px-2 pt-8 h-[26rem] flex flex-col gap-1 bg-no-repeat text-black sp-card hover:bg-[length:110%_110%] transition-all duration-200 ease-linear"
         style={{ backgroundImage: `url(${img})` }}
       >
         <h3 className="uppercase text-text-secondary">{title}</h3>

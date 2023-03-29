@@ -7,11 +7,12 @@ module.exports = {
     extend: {
       colors:{
         'bg-primary':'#131921',
-        'bg-secondary':'#131921',
+        'bg-secondary':'white',
         'text-primary':'white',
-        'text-secondary':' #B4CCDE',
+        'text-secondary':'#777777',
         'border-primary':'#3b4149',
-        'bg-dull':'#f5f5f7'
+        'bg-dull':'#f5f5f7',
+        'bg-hover':'#febd69'
       },
       gridTemplateColumns:{
         'two-row':'10rem 1fr'

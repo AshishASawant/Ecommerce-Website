@@ -7,7 +7,7 @@ const Login = () => {
     <section className="grid place-items-center w-full">
       <Breadcrumb title="Login" />
       <div className="max-w-[1450px] pt-[7rem] pb-[3rem] px-4 w-full grid place-items-center ">
-        <div className="px-6 py-10  bg-white max-w-[35rem] w-full shadow-md rounded-xl">
+        <div className="px-6 py-10  bg-bg-secondary max-w-[35rem] w-full shadow-md rounded-xl">
           <h2 className="text-3xl text-text-secondary text-center">Login</h2>
           <form className="w-full mt-4 grid">
             <input
@@ -31,13 +31,13 @@ const Login = () => {
             <div className="grid place-items-center grid-flow-col justify-around w-fit justify-self-center gap-5 mt-6">
               <button
                 type="submit"
-                className="w-min px-8 py-3 bg-slate-800 text-white rounded-full"
+                className="w-min px-8 py-3 hover:bg-bg-hover text-text-primary hover:text-text-secondary bg-slate-700  rounded-full"
               >
                 Login
               </button>
               <Link
                 to="/signup"
-                className="w-min px-8 py-3 bg-orange-400 text-white rounded-full whitespace-nowrap"
+                className="w-min px-8 py-3  bg-bg-hover hover:text-text-primary text-text-secondary hover:bg-slate-700 rounded-full whitespace-nowrap"
               >
                 Sign Up
               </Link>

@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 const Brands = () => {
   return (
     <section className='bg-bg-dull pt-16 grid place-items-center'>
-        <div className=' bg-white max-w-[1450px] px-4 mx-4 grid place-items-center'>
+        <div className=' bg-bg-secondary max-w-[1450px] px-4 mx-4 grid place-items-center'>
             <Marquee speed={'40'}  > 
               <img src={require('../assets/images/brand-01.png')} className='mr-28' alt="brand" />
               <img src={require('../assets/images/brand-02.png')} className='mr-28' alt="brand" />

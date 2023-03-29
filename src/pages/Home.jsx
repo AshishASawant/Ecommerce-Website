@@ -15,7 +15,7 @@ import {blogsContent} from '../pages/Blogs'
 const Home = () => {
   return (
     <>
-      <section className="p-4 md:p-8 flex justify-center bg-white">
+      <section className="p-4 md:p-8 flex justify-center bg-secondary">
         <div className="hidden">
         <Breadcrumb title='AlpaMart' className='hidden' />
         </div>

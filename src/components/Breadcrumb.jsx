@@ -7,9 +7,9 @@ const Breadcrumb = ({ title }) => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title className="capitalize">{title}</title>
+        <title className="capitalize">AlphaMart - {title}</title>
       </Helmet>
-      <div className="flex items-center justify-center p-4 w-full font-normal bg-white">
+      <div className="flex items-center justify-center p-4 w-full font-normal bg-bg-secondary">
         <p className="capitalize"> <Link to='/'>Home</Link> / {title} </p>{" "}
       </div>
     </>

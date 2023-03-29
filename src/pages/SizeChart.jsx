@@ -5,7 +5,7 @@ const SizeChart = () => {
   return (
     <section className="grid place-items-center w-full px-4">
       <Breadcrumb title='Size Chart' />
-      <div className="max-w-[1450px] grid w-full  bg-white shadow-md mt-10 h-min rounded-md overflow-scroll">
+      <div className="max-w-[1450px] grid w-full  bg-bg-secondary shadow-md mt-10 h-min rounded-md overflow-scroll">
         <table className="table-auto border-collapse  border-2 border-slate-300 mb-0 mt-6 mx-4">
           <thead>
             <tr>

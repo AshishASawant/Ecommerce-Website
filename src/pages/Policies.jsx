@@ -40,7 +40,7 @@ const Policies = ({ title }) => {
     <section className="grid place-items-center w-full">
       <Breadcrumb title={title} />
       <div className="max-w-[1450px] px-4 w-full">
-        <div className=" grid gap-5 bg-white  p-10 px-6  shadow-md mt-10 rounded-md">
+        <div className=" grid gap-5 bg-bg-secondary  p-10 px-6  shadow-md mt-10 rounded-md">
         {policyData.map((item,i)=><PolicyCard item={item} key={i}/>)}
         </div>
       </div>

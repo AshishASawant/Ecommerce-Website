@@ -1,9 +1,20 @@
-import React,{useState} from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Productcard from "../components/Productcard";
-import {GiCancel} from 'react-icons/gi'
+import { GiCancel } from "react-icons/gi";
+import { BiSearch } from "react-icons/bi";
+import { AiFillFilter } from "react-icons/ai";
 
 const Store = () => {
+
+  useEffect(() => {
+    window.addEventListener("resize", handelLayout);
+
+    return () => {
+      window.removeEventListener("resize", handelLayout);
+    };
+  },[]);
+
   const featuredProduct = [
     {
       img: require("../assets/images/watch.jpg"),
@@ -56,7 +67,7 @@ const Store = () => {
     },
   ];
 
-  const [currentLayout,setCurrentLayOut]=useState(4)
+  const [currentLayout, setCurrentLayOut] = useState(2);
 
   let sampleColors = [
     {
@@ -80,25 +91,34 @@ const Store = () => {
     },
   ];
 
-  const handelLayout=(val)=>{
-      document.getElementById('product-div').style.gridTemplateColumns=`repeat(${val},1fr)`
-      setCurrentLayOut(val)
-  }
+  const handelLayout = () => {
+    window.innerWidth <= 640
+      ? setCurrentLayOut(2)
+      : window.innerWidth <= 760
+      ? setCurrentLayOut(3)
+      : setCurrentLayOut(4);
+  };
 
-  const hideNav=()=>{
-    document.getElementById('sub-nav').classList.toggle('hide')
-  }
+
+  const hidefilter = () => {
+    document.getElementById("filter-bar").classList.toggle("no-transform");
+  };
 
   return (
     <section className="grid place-items-center">
       <Breadcrumb title={"Our Store"} />
       <div className="max-w-[1450px] w-full flex mt-8 md:gap-3 px-4 text-sm sm:text-base">
-        <div className="translate-x-[-100%] lg:translate-x-[0%] transition-all duration-300 ease-in-out lg:flex flex-col lg:h-[98vh] max-w-[330px] h-screen  lg:mt-2  overflow-y-scroll overflow-x-hidden gap-3 text-lg lg:w-80 lg:sticky lg:top-2 top-0 left-0 z-20 bg-bg-dull fixed " id="sub-nav">
-          <div className="grid gap-5 bg-white p-4 rounded-md ">
+        <div
+          className="translate-x-[-100%] lg:translate-x-[0%] transition-all duration-300 ease-in-out lg:flex flex-col lg:h-[98vh] max-w-[330px] h-screen  lg:mt-2  overflow-y-scroll overflow-x-hidden gap-3 text-lg lg:w-80 lg:sticky lg:top-2 top-0 left-0 z-20 bg-bg-dull fixed "
+          id="filter-bar"
+        >
+          <div className="grid gap-5 bg-bg-secondary p-4 rounded-md ">
             <div className="flex items-center justify-between">
-            <h3 className="font-bold">Shop By Categories</h3>
-            <GiCancel className="font-bold text-2xl lg:hidden cursor-pointer" onClick={hideNav}/>
-
+              <h3 className="font-bold">Shop By Categories</h3>
+              <GiCancel
+                className="font-bold text-2xl lg:hidden cursor-pointer"
+                onClick={hidefilter}
+              />
             </div>
             <ul className="grid gap-1 text-[1rem]">
               <li className="text-text-secondary font-semibold cursor-pointer">
@@ -118,7 +138,7 @@ const Store = () => {
               </li>
             </ul>
           </div>
-          <div className="grid bg-white p-4 rounded-md gap-4 ">
+          <div className="grid bg-bg-secondary p-4 rounded-md gap-4 ">
             <h3 className="font-bold mb-3">Filter</h3>
             <div className="grid gap-2 font-medium">
               <h3 className="font-semibold">Availiability</h3>
@@ -193,7 +213,7 @@ const Store = () => {
               </label>
             </div>
           </div>
-          <div className="bg-white rounded-md p-4">
+          <div className="bg-bg-secondary rounded-md p-4">
             <h3 className="font-bold mb-6">Product Tag</h3>
             <ul className="flex flex-wrap gap-3">
               <li className="p-2 cursor-pointer font-medium text-text-secondary bg-bg-dull rounded-md ">
@@ -220,60 +240,109 @@ const Store = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-1 flex-col gap-1.5 font-medium">
+        <div className="flex flex-1 flex-col gap-1.5 font-medium text-sm">
           <div className="sticky top-0 bg-bg-dull z-10">
-          <div className="py-2 px-4 flex flex-wrap gap-3 h-max justify-between bg-white w-full rounded-md my-2">
-          <div className="bg-black lg:hidden static text-white px-2 py-2 text-xl rounded-md w-full text-center" onClick={hideNav}>Filter</div>
-            <div className="flex sm:gap-5 gap-2 items-center justify-between flex-1 ">
-              <p className="text-lg line sm:inline-block whitespace-nowrap">Sort By :</p>
-              <select
-                name="sort"
-                id="sort"
-                className="sm:px-8 px-2 min-w-[5rem] w-full outline-none bg-bg-dull rounded-md py-2 text-text-secondary cursor-pointer flex flex-1"
-              >
-                <option value="Best selling">Best selling</option>
-                <option value="Price low to high">Price low to high</option>
-                <option value="Price high to low">Price high to low</option>
-                <option value="Top rated">Top rated</option>
-                <option value="Newest">Newest</option>
-              </select>
-            </div>
-            <div className="flex items-center  sm:gap-5 gap-2 flex-1  sm:justify-end justify-between">
-              <p className="text-text-secondary sm:min-w-max whitespace-nowrap">21 Product</p>
-              <div className="flex gap-4">
-              <div className={`h-8 w-8 ${currentLayout===4?'bg-slate-400':'bg-bg-dull'} rounded-lg md:flex items-center justify-center p-1.5 cursor-pointer hidden` } onClick={()=>handelLayout(4)}>
-                <img
-                  src="images/gr4.svg"
-                  className="aspect-square"
-                  alt="align"
-                />
+            <div className="py-2 px-4 flex flex-wrap gap-3 h-max justify-between bg-bg-secondary w-full rounded-md my-2">
+              <div className="flex gap-1 w-full overflow-hidden lg:hidden">
+                <div className="static px-2 py-2 sm:text-xl rounded-md w-full flex text-center gap-2 text-sm">
+                  <button
+                    onClick={hidefilter}
+                    className="flex items-center justify-center gap-2 p-2  text-text-primary  bg-bg-primary rounded-md sm:flex-1 "
+                  >
+                    <AiFillFilter /><span className="hidden sm:inline-block">Filter</span>
+                  </button>
+                  <input
+                    type="text"
+                    className=" bg-bg-dull  outline-none px-2 w-full min-w-[1rem] rounded-md sm:hidden "
+                    autoFocus={true}
+                    placeholder="search"
+                    id="secondarysearchbar"
+                  />
+                <button
+                  className="text-lg bg-bg-hover rounded-md p-2  sm:hidden"
+                >
+                  <BiSearch />
+                </button>
               </div>
-              <div className={`h-8 w-8 ${currentLayout===3?'bg-slate-400':'bg-bg-dull'} rounded-lg sm:flex items-center justify-center p-1.5 cursor-pointer hidden` } onClick={()=>handelLayout(3)}>
-                <img
-                  src="images/gr3.svg"
-                  className="aspect-square"
-                  alt="align"
-                />
+                </div>
+              <div className="flex sm:gap-5 gap-2 items-center justify-between flex-1 ">
+                <p className="sm:text-lg text-sm line sm:inline-block whitespace-nowrap">
+                  Sort By :
+                </p>
+                <select
+                  name="sort"
+                  id="sort"
+                  className="sm:px-8 px-2 min-w-[5rem] w-full outline-none bg-bg-dull rounded-md py-2 text-text-secondary cursor-pointer flex flex-1"
+                >
+                  <option value="Best selling">Best selling</option>
+                  <option value="Price low to high">Price low to high</option>
+                  <option value="Price high to low">Price high to low</option>
+                  <option value="Top rated">Top rated</option>
+                  <option value="Newest">Newest</option>
+                </select>
               </div>
-              <div className={`h-8 w-8 ${currentLayout===2?'bg-slate-400':'bg-bg-dull'} rounded-lg flex items-center justify-center p-1.5 cursor-pointer` } onClick={()=>handelLayout(2)}>
-                <img
-                  src="images/gr2.svg"
-                  className="aspect-square"
-                  alt="align"
-                />
-              </div>
-              <div className={`h-8 w-8 ${currentLayout===1?'bg-slate-400':'bg-bg-dull'} rounded-lg flex items-center justify-center p-1.5 cursor-pointer` } onClick={()=>handelLayout(1)}>
-                <img
-                  src="images/gr.svg"
-                  className="aspect-square"
-                  alt="align"
-                />
-              </div>
+              <div className="flex items-center  sm:gap-5 gap-2 flex-1  sm:justify-end justify-between">
+                <p className="text-text-secondary sm:min-w-max whitespace-nowrap">
+                  21 Product
+                </p>
+                <div className="flex gap-4">
+                  <div
+                    className={`h-8 w-8 ${
+                      currentLayout === 4 ? "bg-slate-400" : "bg-bg-dull"
+                    } rounded-lg md:flex items-center justify-center p-1.5 cursor-pointer hidden`}
+                    onClick={() => setCurrentLayOut(4)}
+                  >
+                    <img
+                      src="images/gr4.svg"
+                      className="aspect-square"
+                      alt="align"
+                    />
+                  </div>
+                  <div
+                    className={`h-8 w-8 ${
+                      currentLayout === 3 ? "bg-slate-400" : "bg-bg-dull"
+                    } rounded-lg sm:flex items-center justify-center p-1.5 cursor-pointer hidden`}
+                    onClick={() => setCurrentLayOut(3)}
+                  >
+                    <img
+                      src="images/gr3.svg"
+                      className="aspect-square"
+                      alt="align"
+                    />
+                  </div>
+                  <div
+                    className={`h-8 w-8 ${
+                      currentLayout === 2 ? "bg-slate-400" : "bg-bg-dull"
+                    } rounded-lg flex items-center justify-center p-1.5 cursor-pointer`}
+                    onClick={() => setCurrentLayOut(2)}
+                  >
+                    <img
+                      src="images/gr2.svg"
+                      className="aspect-square"
+                      alt="align"
+                    />
+                  </div>
+                  <div
+                    className={`h-8 w-8 ${
+                      currentLayout === 1 ? "bg-slate-400" : "bg-bg-dull"
+                    } rounded-lg flex items-center justify-center p-1.5 cursor-pointer`}
+                    onClick={() => setCurrentLayOut(1)}
+                  >
+                    <img
+                      src="images/gr.svg"
+                      className="aspect-square"
+                      alt="align"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          </div>
-          <div className="sm:gap-4 gap-2 grid grid-cols-4 " id='product-div'>
+          <div
+            className={`sm:gap-4 gap-2 grid`}
+            style={{ gridTemplateColumns: `repeat(${currentLayout},1fr)` }}
+            id="product-div"
+          >
             {featuredProduct.map((item, i) => {
               return (
                 <Productcard

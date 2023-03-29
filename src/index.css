@@ -7,6 +7,7 @@
     margin: 0;
     padding:0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 body{
     background-color: #f5f5f9;
@@ -18,11 +19,9 @@ a{
     text-decoration: none;
 }
 
-.hover-img:hover .hidden-div{
-    transform: translateX(-.1rem);
-    transition: .3s;
+.fill-red{
+    fill: red;
 }
-
 
 .sp-card:nth-child(1){
     color:white
@@ -34,9 +33,25 @@ div ::-webkit-scrollbar-thumb{
     background-color:rgb(176, 176, 176);
     border-radius: 20px;
 }
-.hide{
-    transform: translateX(0%);
+.no-transform{
+    transform: translate(0%);
 }
 .blog-card:hover img{
     transform: scale(1.05);
 }
+.show{
+    padding-top:10px ;
+    height: auto;
+}
+.rotate180{
+    transform: rotate(180deg);
+    transform-origin: center;
+}
+
+.hide{
+    height: 100%;
+    transition: all 2s;
+}
+
+
+

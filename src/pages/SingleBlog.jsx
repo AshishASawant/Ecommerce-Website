@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import { BsArrowLeft, BsPinterest } from "react-icons/bs";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
-import CommentCard from "./CommentCard";
+import CommentCard from "../components/CommentCard";
 
 const SingleBlog = () => {
   let root = useLocation();
@@ -41,8 +41,8 @@ const SingleBlog = () => {
     <section className="grid place-items-center w-full">
       <Breadcrumb title={root.search.split("?")[1].split("%20").join(" ")} />
       <div className="max-w-[1450px] pt-10 px-4 w-full flex gap-5 lg:gap-10">
-        <div className="lg:w-[25rem] px-4 bg-white rounded-md sticky top-2 max-h-[97.5vh] h-min overflow-scroll hidden lg:block">
-            <h2 className="font-medium text-2xl h-min mb-2 sticky top-0 py-4 bg-white">Continue Reading</h2>
+        <div className="lg:w-[25rem] px-4 bg-secondary rounded-md sticky top-2 max-h-[97.5vh] h-min overflow-scroll hidden lg:block">
+            <h2 className="font-medium text-2xl h-min mb-2 sticky top-0 py-4 bg-secondary">Continue Reading</h2>
             <div className="grid border-t-2 border-slate-400 ">
                 {<SmallBlog/>}
                 {<SmallBlog/>}
@@ -98,10 +98,10 @@ const SingleBlog = () => {
               {commentData.map((item, i) => <CommentCard props={item} key={i}/>)}
               {commentData.map((item, i) => <CommentCard props={item} key={i}/>)}
             </div>
-            <div className="w-full gird p-5 bg-white">
+            <div className="w-full gird p-5 bg-secondary">
               <form>
-                <textarea rows='5' type="text" placeholder="Add Comment*" className="w-full outline-none" />
-                <button className="px-6 py-4 bg-slate-700 rounded-full mt-4 hover:bg-orange-700 text-text-secondary">
+                <textarea rows='4' type="text" placeholder="Add Comment*" className="w-full outline-none p-4 rounded-md" />
+                <button className="px-6 py-2 bg-slate-700 rounded-full mt-4 hover:bg-bg-hover text-text-primary hover:text-text-secondary">
                   Submit
                 </button>
               </form>

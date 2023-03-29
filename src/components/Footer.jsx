@@ -117,8 +117,8 @@ const Footer = () => {
     <footer className="bg-bg-primary mt-16">
       <div className="h-12 border-b-2 border-white " />
       <div className="flex flex-wrap text-text-primary sm:justify-evenly md:px-16 sm:py-8 justify-between p-6 gap-2">
-        <div className="">
-          <h1 className="text-xl font-medium mb-3 p-2">Contact US</h1>
+        <div className="p-2">
+          <h1 className="text-xl font-medium mb-3">Contact US</h1>
           <div className="text-text-secondary">
             <address className="mb-3">
               Demo Store No.1234 <br/> Freedom, New York, <br/>1111 United States

@@ -31,8 +31,8 @@ const Product = () => {
   ];
 
   return (
-    <section className="grid  bg-bg-dull place-items-center">
-      <div className="max-w-[1450px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5  bg-white shadow-md p-2 mx-4" >
+    <section className="grid  bg-bg-dull place-items-center mx-4">
+      <div className="max-w-[1450px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full bg-bg-secondary shadow-md p-2 " >
         {productItem.map((item,i)=>{
             return(
                 <div key={i} className="flex flex-wrap-reverse sm:flex-nowrap sm:flex-row gap-1 items-center  p-2 w-full justify-center border-red">
@@ -46,7 +46,7 @@ const Product = () => {
         })}
         {productItem.map((item,i)=>{
             return(
-                <div key={i} className="flex flex-wrap-reverse sm:flex-nowrap sm:flex-row gap-1 items-center  p-2 w-full justify-center border-red">
+                <div key={i} className="flex flex-wrap-reverse sm:flex-nowrap sm:flex-row gap-1 items-center p-2 w-full justify-center border-red">
                     <div className="flex flex-col  justify-center gap-1 w-full items-center">
                         <h2 className="font-semibold text-md">{item.title}</h2>
                         <p className="text-text-secondary text-sm">{item.subtitle}</p>
