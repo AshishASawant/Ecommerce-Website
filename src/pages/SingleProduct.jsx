@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsHeartFill, BsHeart } from "react-icons/bs";
 import { GrPowerCycle } from "react-icons/gr";
 import { GiClothes } from "react-icons/gi";
@@ -9,16 +9,48 @@ import { RiTruckLine } from "react-icons/ri";
 import { AiFillCaretDown, AiOutlineShareAlt } from "react-icons/ai";
 import { TfiRulerAlt } from "react-icons/tfi";
 import Featured from "../components/Featured";
-import CommentCard from "../components/CommentCard";
-import Zoom from "react-img-hover-zoom";
+import ReviewCard from "../components/ReviewCard";
+import ZoomingImage from "../components/ZoomingImage";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, setCartTotal } from "../features/cartSlice";
+import { removeFavourite, setFavourite } from "../features/favouriteSlice";
+import { removeCompare, setCompare } from "../features/compareSlice";
 
 const SingleProduct = () => {
+  const location = useLocation();
+  const [dimention, setDimention] = useState(null);
+  const [currentQuantity, setcurrentQuantity] = useState(1);
+  const { cart, compare, favourite } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isPresent, setIsPresent] = useState(false);
+  const { title, price, image, category, description, id } = location.state;
+
+  useEffect(() => {
+    handleSize();
+    for (let i = 0; i < cart.item.length; i++) {
+      if (cart.item[i].id === id) {
+        console.log(cart.item[i]);
+        console.log(cart.item[i].id === id);
+        setIsPresent(true);
+      } else {
+        setIsPresent(false);
+      }
+    }
+    // eslint-disable-next-line
+  }, [location.state]);
+
+  const handleSize = () => {
+    let target = document.getElementById("main-img-div");
+    setDimention(target.clientWidth);
+  };
+
   const handleClick = (e, val) => {
     e.target.classList.toggle("rotate180");
     document.getElementById(val).classList.toggle("show");
   };
 
-  const CommentDetails = [
+  const ReviewDetails = [
     {
       rating: 4,
       title: "Good",
@@ -66,51 +98,48 @@ const SingleProduct = () => {
   return (
     <>
       <section className="grid place-items-center w-full">
-        <Breadcrumb title={"singleProduct"} />
+        <Breadcrumb title={title} />
         <div className="max-w-[1450px] sm:px-4 px-2 w-full">
-          <div className="bg-white grid md:grid-cols-2 grid-cols-1 w-full gap-5 my-10 rounded-md sm:p-6 p-4">
+          <div className="bg-white grid lg:grid-cols-2 grid-cols-1 w-full gap-5 my-10 rounded-md sm:p-6 p-4">
             <div className="flex flex-col gap-5 overflow-hidden w-full items-center">
-              <div className=" border border-slate-300 w-full">
-
-              <Zoom
-                img="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/24-02_884x.jpg?v=1655098000"
-                zoomScale={1.5}
-                width={670}
-                height={600}
-                style={{}}
-                transitionTime={0.3}
-                className='cursor-move'
-                />
-                </div>
-              <div className="grid w-full md:grid-cols-2 grid-cols-4 md:gap-5 gap-1">
+              <div
+                className=" border border-slate-300 w-full grid place-items-center"
+                id="main-img-div"
+              >
+                {dimention && <ZoomingImage width={dimention} image={image} />}
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/24-02_884x.jpg?v=1655098000"
+                  src={image}
                   alt="product"
-                  className="border border-slate-300"
+                  className="border border-slate-300 p-10 lg:hidden aspect-square"
                 />
+              </div>
+              <div className="grid w-full lg:grid-cols-2 grid-cols-4 md:gap-5 gap-1">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/24-02_884x.jpg?v=1655098000"
+                  src={image}
                   alt="product"
-                  className="border border-slate-300"
+                  className="border border-slate-300 aspect-square p-2"
                 />
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/24-02_884x.jpg?v=1655098000"
+                  src={image}
                   alt="product"
-                  className="border border-slate-300"
+                  className="border border-slate-300 aspect-square p-2"
                 />
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/24-02_884x.jpg?v=1655098000"
+                  src={image}
                   alt="product"
-                  className="border border-slate-300"
+                  className="border border-slate-300 aspect-square p-2"
+                />
+                <img
+                  src={image}
+                  alt="product"
+                  className="border border-slate-300 aspect-square p-2"
                 />
               </div>
             </div>
             <div className="flex flex-col gap-5 text-sm sticky top-2 h-min">
-              <h2 className="text-lg font-semibold h-min">
-                Kids Headphones Bulk 10 Pack Multi Colored For Students
-              </h2>
+              <h2 className="text-lg font-semibold h-min">{title}</h2>
               <div className=" border-y-2 border-slate-300 flex flex-col gap-3 py-3">
-                <p className="font-semibold text-lg">$100</p>
+                <p className="font-semibold text-lg">$ {price}</p>
                 <div className="flex gap-1 items-center">
                   <ReactStars
                     size={20}
@@ -123,25 +152,18 @@ const SingleProduct = () => {
               </div>
               <div className="grid gap-5 py-3">
                 <p className="text-text-secondary">
-                  <span className="font-semibold text-black">Type : </span>
-                  Headset
+                  <span className="font-semibold text-black">
+                    Description :{" "}
+                  </span>
+                  {description}
                 </p>
                 <p className="text-text-secondary">
-                  <span className="font-semibold text-black">Brand : </span>Sony
+                  <span className="font-semibold text-black">Brand : </span>
+                  Unknown
                 </p>
-                <div>
-                  <h3 className="font-semibold">Categories :</h3>
-                  <p className="text-text-secondary">
-                    airpodscamera'sComputers & Laptopheadphonesmini speakerour
-                    storePortable Speakerssmart phonesSmart
-                    TelevisionSmartwatches
-                  </p>
-                </div>
                 <div className="flex gap-1">
-                  <h3 className="font-semibold">Tags :</h3>
-                  <p className="text-text-secondary">
-                    headphones laptop mobile oppo speaker
-                  </p>
+                  <h3 className="font-semibold">Category :</h3>
+                  <p className="text-text-secondary">{category}</p>
                 </div>
                 <p className="text-text-secondary">
                   <span className="font-semibold text-black">SKU : </span>SKU027
@@ -173,35 +195,99 @@ const SingleProduct = () => {
                 <div className="flex flex-wrap mt-3 items-center gap-10">
                   <h4 className="font-semibold">Quantity</h4>
                   <div className="border border-slate-300 flex w-min h-10">
-                    <p className="p-3">1</p>
+                    <p className="p-3">{currentQuantity}</p>
                     <div className="flex flex-col">
-                      <button className="px-2 border-b border-l ">+</button>
-                      <p className="px-2 border-l">-</p>
+                      <button
+                        className="px-2 border-b border-l "
+                        onClick={() => {
+                          setcurrentQuantity(currentQuantity + 1);
+                        }}
+                      >
+                        +
+                      </button>
+                      <button
+                        className="px-2 border-l"
+                        onClick={() => {
+                          if (currentQuantity > 1) {
+                            setcurrentQuantity(currentQuantity - 1);
+                          }
+                        }}
+                      >
+                        -
+                      </button>
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <Link
+                    <button
                       to="/"
-                      className="rounded-full px-6 sm:text-base text-sm py-2 bg-slate-500 text-text-secondary"
+                      className="rounded-full px-6 sm:text-base text-sm py-2 bg-bg-primary text-text-secondary"
                     >
-                      Sold Out
-                    </Link>
-                    <Link
+                      <span className="text-text-primary">
+                        Total:{Number(currentQuantity * price).toFixed(2)}
+                      </span>
+                    </button>
+                    <button
+                      to="/"
+                      className="rounded-full px-6 sm:text-base text-sm py-2 bg-bg-primary text-text-secondary"
+                      onClick={() => {
+                        if (!isPresent) {
+                          setIsPresent(!isPresent);
+                          dispatch(
+                            addToCart({ id, quantity: currentQuantity })
+                          );
+                          dispatch(
+                            setCartTotal(
+                              cart.cartTotal + price * currentQuantity
+                            )
+                          );
+                        } else {
+                          window.scrollTo(0, 0);
+                          navigate("/cart");
+                        }
+                      }}
+                    >
+                      {!isPresent && "Add To Cart"}
+                      {isPresent && "View Cart"}
+                    </button>
+                    <button
                       to="/"
                       className="rounded-full px-6 sm:text-base text-sm py-2 bg-orange-500"
                     >
                       By It Now
-                    </Link>
+                    </button>
                   </div>
                 </div>
                 <div className="flex gap-10 mt-4">
                   <div className="flex items-center gap-2">
                     <BsHeartFill className="text-xl" />
-                    <Link>Add to wishlist</Link>
+                    <button
+                      className="cursor-pointer"
+                      onClick={() => {
+                        if (!favourite.includes(id)) {
+                          dispatch(setFavourite(id));
+                        } else {
+                          dispatch(removeFavourite(id));
+                        }
+                      }}
+                    >
+                      {!favourite.includes(id) && 'Add to wishlist'}
+                      {favourite.includes(id) && 'Remove From wishlist'}
+                    </button>
                   </div>
                   <div className="flex items-center gap-2">
                     <GrPowerCycle className="text-xl" />
-                    <Link>Add to wishlist</Link>
+                    <button className="cursor-pointer"
+                    onClick={() => {
+                      if (!compare.includes(id)) {
+                        dispatch(setCompare(id));
+                      }
+                      else{
+                        dispatch(removeCompare(id));
+                      }
+                    }}
+                    >  {!compare.includes(id) && 'Add to compare'}
+                    {compare.includes(id) && 'Remove From compare'}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -330,10 +416,11 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
+        <Featured />
         <div className="w-full mt-5 flex flex-col sm:p-4 p-2 gap-5">
           <h1 className="text-3xl font-medium">Reviews</h1>
           <div className="bg-white sm:px-6 px-2 rounded-md py-2">
-            <div className="py-8  border-b px-2">
+            <div className="py-8  px-2">
               <h2 className="sm:text-xl text-lg mb-3">
                 Average Customer Reviews
               </h2>
@@ -348,13 +435,12 @@ const SingleProduct = () => {
                 <p className="text-sm sm:text-base">(Based on 3 reviews)</p>
               </div>
             </div>
-            {CommentDetails.map((item, i) => (
-              <CommentCard item={item} key={i} />
+            {ReviewDetails.map((item, i) => (
+              <ReviewCard props={item} key={i} />
             ))}
           </div>
         </div>
       </section>
-      <Featured />
     </>
   );
 };

@@ -32,8 +32,8 @@ const Services = () => {
     },
   ];
   return (
-    <section className="bg-bg-dull">
-        <div className=" grid sm:grid-cols-5 grid-cols-2 sm:p-12 p-4 gap-5 place-items-center">
+    <section className="bg-bg-dull grid place-items-center w-full">
+        <div className=" grid sm:grid-cols-5 grid-cols-2 sm:p-12 p-4 gap-5 place-items-center max-w-[1450px] w-full">
             {service.map(item=>{ return(
                 <div className="flex items-center gap-4 flex-col lg:flex-row" key={item.title}>
                     <item.logo className="text-5xl sm:text-3xl"/>

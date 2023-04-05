@@ -17,9 +17,10 @@ const BackToTop = () => {
   };
 
   return (
-    <a href="#navbar" id="back-to-top" className="opacity-0 transition-all duration-500 z-50 fixed bg-bg-hover bottom-4  text-3xl p-1 rounded-lg right-4">
+    <button id="back-to-top" className="opacity-0 transition-all duration-500 z-50 fixed bg-bg-hover bottom-4  text-3xl p-1 rounded-lg right-4"
+    onClick={()=>window.scrollTo(0,0)}>
       <AiOutlineArrowUp/>
-    </a>
+    </button>
   );
 };
 

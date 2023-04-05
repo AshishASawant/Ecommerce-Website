@@ -10,7 +10,7 @@ const Breadcrumb = ({ title }) => {
         <title className="capitalize">AlphaMart - {title}</title>
       </Helmet>
       <div className="flex items-center justify-center p-4 w-full font-normal bg-bg-secondary">
-        <p className="capitalize"> <Link to='/'>Home</Link> / {title} </p>{" "}
+        <p className="capitalize"> <Link to='/' className="underline">Home</Link> / {title} </p>{" "}
       </div>
     </>
   );

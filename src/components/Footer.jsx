@@ -56,7 +56,7 @@ const otherInfo = [
       },
       {
         title: "Blogs",
-        link: "/",
+        link: "/blogs",
       },
     ],
   },
