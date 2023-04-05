@@ -2,7 +2,7 @@ import React from "react";
 import ReactStars from "react-rating-stars-component";
 
 const ReviewCard = ({ props }) => {
-  const { rating, title, userName, date, desc, response } = props;
+  const {  title, userName, date, desc, response } = props;
   return (
     <div className="w-full px-2 py-5 border-t">
       <ReactStars size={20} value={4} color2="red" edit={false} half={true} />
