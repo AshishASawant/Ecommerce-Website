@@ -30,7 +30,7 @@ const Productcard = ({ props }) => {
     () => {
       for (let i = 0; i < cart.item.length; i++) {
         if (cart.item[i].id === id) {
-          setDetails({ ...details, cart: true });
+          setDetails({ ...details, cart: true , 'quantity':cart.item[i].quantity});
         }
       }
     },
@@ -98,14 +98,14 @@ const Productcard = ({ props }) => {
           onClick={(e) => {
             if (!details.cart) {
               dispatch(addToCart({ id, quantity: 1 }));
-              dispatch(setCartTotal(cart.cartTotal+price))
+              dispatch(setCartTotal(Number(cart.cartTotal)+Number(price)))
               e.target.style.backgroundColor = "orange";
               setDetails({ ...details, cart: true });
               
             } else {
               setDetails({ ...details, cart: false });
               dispatch(removeFromCart(id));
-              dispatch(setCartTotal((cart.cartTotal-price)))
+              dispatch(setCartTotal((Number(cart.cartTotal)-Number(price*details.quantity))))
               e.target.style.backgroundColor = "white";
             }
           }}

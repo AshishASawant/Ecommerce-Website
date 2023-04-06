@@ -235,11 +235,7 @@ const SingleProduct = () => {
                           dispatch(
                             addToCart({ id, quantity: currentQuantity })
                           );
-                          dispatch(
-                            setCartTotal(
-                              cart.cartTotal + price * currentQuantity
-                            )
-                          );
+                          dispatch(setCartTotal(Number(cart.cartTotal)+Number(price*currentQuantity)))
                         } else {
                           window.scrollTo(0, 0);
                           navigate("/cart");
