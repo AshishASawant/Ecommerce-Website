@@ -32,19 +32,19 @@ const Sponserd = () => {
     const { title, subtitle, desc, img } = props.item;
     return (
       <div
-        className="bg-center bg-bg-secondary bg-[length:100%_100%] rounded-md  sm:px-6 px-2 pt-8 h-[26rem] flex flex-col gap-1 bg-no-repeat text-black sp-card hover:bg-[length:110%_110%] transition-all duration-200 ease-linear"
+        className="bg-center bg-bg-secondary bg-[length:100%_100%] rounded-md  sm:px-6 px-2  pt-8 sm:h-[26rem] h-[15rem] flex flex-col gap-1 bg-no-repeat text-black sp-card hover:bg-[length:110%_110%] transition-all duration-200 ease-linear text-xs sm:text-base"
         style={{ backgroundImage: `url(${img})` }}
       >
         <h3 className="uppercase text-text-secondary">{title}</h3>
-        <h1 className="text-2xl">{subtitle}</h1>
-        <p className="text-text-secondary">{desc}</p>
+        <h1 className="sm:text-2xl text-xs">{subtitle}</h1>
+        <p className="text-text-secondary sm:block hidden">{desc}</p>
       </div>
     );
   };
 
   return (
     <section className="grid place-items-center pt-16 px-4 bg-bg-dull">
-      <div className="grid md:grid-cols-4 grid-cols-2 gap-5 max-w-[1450px] w-full sp-card ">
+      <div className="grid lg:grid-cols-4 grid-cols-2 sm:gap-5 gap-2 max-w-[1450px] w-full sp-card ">
         {sponsers.map((item, i) => {
           return <SponserCard item={item} key={i} />;
         })}

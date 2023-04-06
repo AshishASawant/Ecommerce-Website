@@ -39,18 +39,18 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    <div className="relative z-50">
       <div
-        className="h-[4rem] md:h-full  absolute md:static z-20 transition-all  ease-linear overflow-hidden md:overflow-visible"
+        className="h-[3.5rem] fixed md:h-full  md:static z-20 transition-all  ease-linear overflow-hidden md:overflow-visible"
         id="navbar"
       >
-        <div className="bg-bg-primary text-text-primary pt-4 items-center flex flex-wrap md:px-6 px-2 text-sm gap-5 flex-col sm:flex-row py-2 ">
-          <div className="flex gap-5 flex-1 sm:flex-initial w-full sm:w-min">
+        <div className="bg-bg-primary text-text-primary md:pt-4 pt-3 items-center flex flex-wrap md:px-6 px-2 text-sm gap-5 flex-col sm:flex-row py-2 ">
+          <div className="flex gap-5 flex-1 sm:flex-initial w-full sm:w-min items-center sm:ml-0 ml-3">
             <RxHamburgerMenu
-              className="text-3xl md:hidden cursor-pointer"
+              className="text-2xl md:hidden cursor-pointer"
               onClick={hideNavbar}
             />
-            <Link to='/' className="text-3xl">AlphaMart</Link>
+            <Link to='/' className="md:text-3xl text-2xl">AlphaMart</Link>
           </div>
           <div className="relative flex-col flex bg-secondary rounded-md items-center justify-center text-black  flex-1  sm:min-w-[20rem] sm:max-w-[30rem] w-full">
             <div className="flex w-full">
@@ -96,24 +96,24 @@ const Navbar = () => {
             )}
           </div>
           <div className="gap-5 flex m-2 flex-wrap sm:flex-nowrap justify-evenly flex-1">
-            <div className="flex w-32 justify-between text-text-primary">
+            <Link to="/compare" className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
               <GrPowerCycle className="h-full text-4xl invert text-text-primary" />
-              <Link to="/compare" className="pl-2" onClick={hideNavbar}>
+              <p  className="pl-2" >
                 Compare Product
-              </Link>
-            </div>
-            <div className="flex w-32 justify-between text-text-primary">
+              </p>
+            </Link>
+            <Link to='/wishlist' className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
               <BsHeart className="h-full text-4xl " />
-              <Link to="/wishlist" className="pl-2" onClick={hideNavbar}>
+              <p  className="pl-2" >
                 Favourite Whishlist
-              </Link>
-            </div>
-            <div className="flex w-32 justify-between text-text-primary">
+              </p>
+            </Link>
+            <Link to='/login' className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
               <AiOutlineUser className="h-full text-4xl " />
-              <Link to="/login" className="pl-2" onClick={hideNavbar}>
+              <p className="pl-2" onClick={hideNavbar}>
                 Login My Account
-              </Link>
-            </div>
+              </p>
+            </Link>
             <Link
               to="/cart"
               className="flex w-32 justify-between text-text-primary"
@@ -213,7 +213,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="h-[4rem] md:h-0"></div>
-    </>
+    </div>
   );
 };
 

@@ -299,7 +299,7 @@ const Store = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-1.5 font-medium text-sm">
-          <div className="sticky top-0 bg-bg-dull z-10">
+          <div className="sticky md:top-0 top-14 bg-bg-dull z-10">
             <div className="py-2 px-4 flex flex-wrap gap-3 h-max justify-between bg-bg-secondary w-full rounded-md my-2">
               <div className="flex gap-1 w-full overflow-hidden lg:hidden">
                 <div className="static  py-2 sm:text-xl rounded-md w-full flex text-center gap-2 text-sm">
@@ -328,13 +328,13 @@ const Store = () => {
                           ? { display: "none" }
                           : { display: "flex" }
                       }
-                      className="text-xs rounded-full w-4 h-4  items-center justify-center bg-bg-primary text-text-primary "
+                      className="text-xs rounded-full w-4 h-4  items-center justify-center  "
                       onClick={() => {
                         setSearchbar("");
                         setAllProduct(product.data);
                       }}
                     >
-                      <ImCross className=""/>
+                      <ImCross className="text-[.5rem]"/>
                     </button>
                   </div>
                   <button className="text-lg bg-bg-hover rounded-md p-2  sm:hidden">

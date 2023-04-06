@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineTwitter } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineTwitter } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
@@ -113,15 +113,34 @@ const otherInfo = [
 ];
 
 const Footer = () => {
+ 
+  const handleFooter = () => {
+    document.getElementById("main-footer").classList.toggle("hide");
+  };
+
   return (
-    <footer className="bg-bg-primary mt-16">
-      <div className="h-12 border-b-2 border-white " />
-      <div className="flex flex-wrap text-text-primary sm:justify-evenly md:px-16 sm:py-8 justify-between p-6 gap-2">
+    <footer className="bg-bg-primary mt-16 ">
+      <div className="h-12 border-b-2 border-white flex items-center justify-between px-6 z-40 relative bg-bg-primary">
+        <p className="text-text-primary font-md md:hidden">©2023.Alphamart</p>
+        <AiFillCaretDown
+          className="text-text-primary text-xl md:hidden cursor-pointer"
+          onClick={(e) => {
+            e.target.classList.toggle('rotate180')
+            handleFooter();
+            window.scrollTo(0, document.body.scrollHeight);
+          }}
+        />
+      </div>
+      <div
+        className="flex flex-wrap text-text-primary sm:justify-evenly md:px-16 md:py-6 justify-between  gap-2 h-0 md:h-full overflow-hidden"
+        id="main-footer"
+      >
         <div className="p-2">
           <h1 className="text-xl font-medium mb-3">Contact US</h1>
           <div className="text-text-secondary">
             <address className="mb-3">
-              Demo Store No.1234 <br/> Freedom, New York, <br/>1111 United States
+              Demo Store No.1234 <br /> Freedom, New York, <br />
+              1111 United States
             </address>
             <p className="mb-3">+91-1234567890</p>
             <p className="mb-3">alphamart@gmail.com</p>
@@ -142,16 +161,27 @@ const Footer = () => {
           </div>
         </div>
         {otherInfo.map((item) => {
-          return <div className="p-2" key={item.heading}>
-            <h1 className="mb-3 font-medium text-xl">{item.heading}</h1>
-            {item.subHeadings.map(subitem=>{
-              return(
-              <Link key={subitem.title} to={subitem.link} className='mb-1 block text-text-secondary'>{subitem.title}</Link>)
-            })}
-          </div>;
+          return (
+            <div className="p-2" key={item.heading}>
+              <h1 className="mb-3 font-medium text-xl">{item.heading}</h1>
+              {item.subHeadings.map((subitem) => {
+                return (
+                  <Link
+                    key={subitem.title}
+                    to={subitem.link}
+                    className="mb-1 block text-text-secondary"
+                  >
+                    {subitem.title}
+                  </Link>
+                );
+              })}
+            </div>
+          );
         })}
       </div>
-      <div className="h-12 border-t-2 border-white px-16 py-2 flex items-center justify-center"><p className="text-text-primary font-md">©2023.Alphamart</p></div>
+      <div className="h-12 border-t-2 border-white px-16 py-2 md:flex items-center justify-center hidden ">
+        <p className="text-text-primary font-md">©2023.Alphamart</p>
+      </div>
     </footer>
   );
 };

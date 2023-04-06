@@ -98,7 +98,7 @@ const SingleProduct = () => {
   return (
     <>
       <section className="grid place-items-center w-full">
-        <Breadcrumb title={title} />
+        <Breadcrumb title={title} newPath={'store'} />
         <div className="max-w-[1450px] sm:px-4 px-2 w-full">
           <div className="bg-white grid lg:grid-cols-2 grid-cols-1 w-full gap-5 my-10 rounded-md sm:p-6 p-4">
             <div className="flex flex-col gap-5 overflow-hidden w-full items-center">
@@ -217,7 +217,7 @@ const SingleProduct = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
                     <button
                       to="/"
                       className="rounded-full px-6 sm:text-base text-sm py-2 bg-bg-primary text-text-secondary"
@@ -228,7 +228,7 @@ const SingleProduct = () => {
                     </button>
                     <button
                       to="/"
-                      className="rounded-full px-6 sm:text-base text-sm py-2 bg-bg-primary text-text-secondary"
+                      className="rounded-full px-6 sm:text-base text-sm py-2 bg-bg-primary text-text-secondary hover:text-text-primary"
                       onClick={() => {
                         if (!isPresent) {
                           setIsPresent(!isPresent);
