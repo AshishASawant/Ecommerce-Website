@@ -7,7 +7,7 @@ const SizeChart = () => {
       <Breadcrumb title='Size Chart' />
       <div className="max-w-[1450px] grid w-full  bg-bg-secondary shadow-md mt-10 h-min rounded-md overflow-scroll">
         <table className="table-auto border-collapse  border-2 border-slate-300 mb-0 mt-6 mx-4">
-          <thead>
+          <thead className="bg-bg-dull">
             <tr>
               <th className="border-2 border-slate-300 px-4 py-6 text-start">Size</th>
               <th className="border-2 border-slate-300 px-4 py-6 text-start">Chest</th>

@@ -50,7 +50,6 @@ div ::-webkit-scrollbar-thumb{
 
 .hide{
     height: 100%;
-    transition: all 2s;
 }
 
 

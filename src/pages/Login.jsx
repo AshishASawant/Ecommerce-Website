@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <section className="grid place-items-center w-full">
       <Breadcrumb title="Login" />
-      <div className="max-w-[1450px] pt-[7rem] pb-[3rem] px-4 w-full grid place-items-center ">
+      <div className="max-w-[1450px] pt-[7rem] pb-[3rem] md:px-4 px-2  w-full grid place-items-center md:min-h-full min-h-[73.9vh]">
         <div className="px-6 py-10  bg-bg-secondary max-w-[35rem] w-full shadow-md rounded-xl">
           <h2 className="text-3xl text-text-secondary text-center">Login</h2>
           <form className="w-full mt-4 grid">

@@ -11,6 +11,7 @@ const Cart = () => {
   return (
     <section className="grid place-items-center">
       <Breadcrumb title="Cart" />
+      <div className="md:min-h-full min-h-[73.9vh] w-full">
       {cart.item.length!==0?<div className="flex flex-col w-full md:pt-16  px-4">
         <div>
           <div className=" w-full  items-center border-b border-slate-300 pb-3 uppercase text-text-secondary font-medium hidden md:flex">
@@ -43,6 +44,7 @@ const Cart = () => {
           </Link>
         </div>
       </div>:<p className="w-full text-center pt-16">Your Cart Is Empty</p>}
+      </div>
     </section>
   );
 };

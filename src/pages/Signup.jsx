@@ -5,7 +5,7 @@ const Signup = () => {
   return (
 <section className="grid place-items-center w-full">
     <Breadcrumb title="Signup" />
-    <div className="max-w-[1450px] pt-[7rem] pb-[3rem] px-4 w-full grid place-items-center ">
+    <div className="max-w-[1450px] pt-[7rem] pb-[3rem] px-4 w-full grid place-items-center md:min-h-full min-h-[73.9vh]">
       <div className='px-8 py-10  bg-bg-secondary max-w-[35rem] w-full shadow-md rounded-xl'>
         <h2 className='text-3xl text-text-secondary text-center mb-6'>Create Account</h2>
         <form className='w-full mt-4 grid gap-5'>

@@ -38,7 +38,6 @@ const CartCard = ({ id }) => {
       <div className="md:p-2 flex md:flex-1 w-full md:gap-8 gap-4">
         <img
           src={mainCart?.image}
-          // src={''}
           alt="Product"
           className="w-20 aspect-square self-center rounded-md"
           onClick={() => {

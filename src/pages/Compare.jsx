@@ -116,17 +116,17 @@ const Compare = () => {
   return (
     <section className="grid place-items-center w-full">
       <Breadcrumb title="Compare" />
+        <div className="max-w-[1450px] pt-16 px-4 w-full md:min-h-full min-h-[73.9vh]">
       {compare.length !== 0 ? (
-        <div className="max-w-[1450px] pt-16 px-4 w-full">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-full flex-wrap gap-5 items-center justify-between">
             {compare.map((id) => (
               <CompareCard id={id} key={id} />
             ))}
           </div>
-        </div>
       ) : (
         <p className="w-full mt-16 text-center">Add Some Products To Compare</p>
       )}
+        </div>
     </section>
   );
 };

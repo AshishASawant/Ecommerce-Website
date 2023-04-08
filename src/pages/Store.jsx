@@ -150,9 +150,9 @@ const Store = () => {
     <section className="grid place-items-center">
       {}
       <Breadcrumb title={"Our Store"} />
-      <div className="max-w-[1450px] w-full flex mt-8 md:gap-3 px-4 text-sm sm:text-base">
+      <div className="max-w-[1450px] w-full flex mt-8 md:gap-3 px-4 text-sm sm:text-base md:min-h-full min-h-[70.2vh]">
         <div
-          className="translate-x-[-100%] lg:translate-x-[0%] transition-all duration-300 ease-in-out lg:flex flex-col lg:h-[98vh] max-w-[330px] h-screen  lg:mt-2  overflow-y-scroll overflow-x-hidden gap-3 text-lg lg:w-80 lg:sticky lg:top-2 top-0 left-0 z-20 bg-bg-dull fixed "
+          className="translate-x-[-100%] lg:translate-x-[0%] transition-all duration-300 ease-in-out lg:flex flex-col lg:h-[98vh] max-w-[330px] h-screen  lg:mt-2  overflow-y-scroll overflow-x-hidden gap-3 text-lg lg:w-80 lg:sticky lg:top-2 top-0 left-0 z-50 md:z-0 bg-bg-dull fixed  "
           id="filter-bar"
         >
           <div className="grid gap-5 bg-bg-secondary p-4 rounded-md ">
@@ -314,7 +314,6 @@ const Store = () => {
                     <input
                       type="text"
                       className=" bg-bg-dull  outline-none  w-full min-w-[1rem]"
-                      autoFocus={true}
                       onChange={handleSearch}
                       placeholder="search"
                       value={searchbar}

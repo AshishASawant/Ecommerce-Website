@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillCaretDown, AiOutlineTwitter } from "react-icons/ai";
+import { AiFillCaretUp, AiOutlineTwitter } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
@@ -120,9 +120,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-bg-primary mt-16 ">
-      <div className="h-12 border-b-2 border-white flex items-center justify-between px-6 z-40 relative bg-bg-primary">
+      <div className="h-[48px]  flex items-center justify-between  px-6 z-40 md:z-0  relative bg-bg-primary shadow-sm shadow-white">
         <p className="text-text-primary font-md md:hidden">©2023.Alphamart</p>
-        <AiFillCaretDown
+        <AiFillCaretUp
           className="text-text-primary text-xl md:hidden cursor-pointer"
           onClick={(e) => {
             e.target.classList.toggle('rotate180')
@@ -132,10 +132,10 @@ const Footer = () => {
         />
       </div>
       <div
-        className="flex flex-wrap text-text-primary sm:justify-evenly md:px-16 md:py-6 justify-between  gap-2 h-0 md:h-full overflow-hidden"
+        className="flex flex-wrap text-text-primary sm:justify-evenly md:px-16 md:py-6 md:justify-evenly  gap-2 h-0 md:h-full overflow-hidden "
         id="main-footer"
       >
-        <div className="p-2">
+        <div className="p-2 flex md:flex-initial flex-1 flex-col ">
           <h1 className="text-xl font-medium mb-3">Contact US</h1>
           <div className="text-text-secondary">
             <address className="mb-3">
@@ -145,14 +145,14 @@ const Footer = () => {
             <p className="mb-3">+91-1234567890</p>
             <p className="mb-3">alphamart@gmail.com</p>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center  md:flex-initial">
             {mediaContact.map((item) => {
               return (
                 <div
                   key={item.platformName}
-                  className="text-2xl p-1.5 mr-2 overflow-hidden rounded-full bg-slate-700 grid items-center"
+                  className="md:text-2xl rext-xs md:p-1.5 p-1 mr-2 overflow-hidden rounded-full bg-slate-700 grid items-center"
                 >
-                  <Link to={item.link}>
+                  <Link to={item.link} className="line-clamp-1 text-clip">
                     <item.logo />
                   </Link>
                 </div>
@@ -162,14 +162,14 @@ const Footer = () => {
         </div>
         {otherInfo.map((item) => {
           return (
-            <div className="p-2" key={item.heading}>
+            <div className="p-2 flex md:flex-initial flex-1 flex-col " key={item.heading}>
               <h1 className="mb-3 font-medium text-xl">{item.heading}</h1>
               {item.subHeadings.map((subitem) => {
                 return (
                   <Link
                     key={subitem.title}
                     to={subitem.link}
-                    className="mb-1 block text-text-secondary"
+                    className="mb-1 block text-text-secondary line-clamp-1 text-clip"
                   >
                     {subitem.title}
                   </Link>

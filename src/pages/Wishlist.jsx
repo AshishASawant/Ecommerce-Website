@@ -26,7 +26,7 @@ const Wishlist = () => {
     };
 
     return (
-      curentItem && 
+      curentItem && (
         <div className="grid w-full gap-5 font-medium relative group p-1 h-full ">
           <div className="bg-bg-secondary p-4">
             <img
@@ -51,18 +51,30 @@ const Wishlist = () => {
           <p className="line-clamp-2 sm:px-3 px-1">${curentItem?.price}</p>
         </div>
       )
+    );
   };
+
+  // useEffect(() => {
+  //   console.log()
+  // }, [third])
 
   return (
     <section className="grid place-items-center w-full">
       <Breadcrumb title="Wishlist" />
-      {favourite.length!==0?<div className="max-w-[1450px] pt-16 px-4 w-full">
+      <div
+        className="max-w-[1450px] pt-16 px-4 w-full md:min-h-full min-h-[73.9vh]"
+        // style={{  minHeight: "c" }}
+      >
+        {favourite.length !== 0 ? (
           <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 w-full flex-wrap sm:gap-5 gap-x-2 gap-y-5 sm:gap-y-10 items-center justify-between">
             {favourite.map((item) => (
               <WislistCard key={item} id={item} />
             ))}
           </div>
-        </div>:<p className="mt-16 w-full text-center">Your Wishlist Is Empty</p>}
+        ) : (
+          <p className="mt-16 w-full text-center">Your Wishlist Is Empty</p>
+        )}
+      </div>
     </section>
   );
 };

@@ -39,18 +39,20 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 w-full">
       <div
-        className="h-[3.5rem] fixed md:h-full  md:static z-20 transition-all  ease-linear overflow-hidden md:overflow-visible"
+        className="h-[3.5rem] fixed md:h-full  md:static z-20  overflow-hidden md:overflow-visible w-full transition-[height] duration-500 ease-in-out"
         id="navbar"
       >
-        <div className="bg-bg-primary text-text-primary md:pt-4 pt-3 items-center flex flex-wrap md:px-6 px-2 text-sm gap-5 flex-col sm:flex-row py-2 ">
-          <div className="flex gap-5 flex-1 sm:flex-initial w-full sm:w-min items-center sm:ml-0 ml-3">
+        <div className="bg-bg-primary text-text-primary md:pt-4 pt-3 items-center flex flex-wrap md:px-6 px-2 text-sm gap-5 flex-col sm:flex-row py-2  ">
+          <div className="flex gap-5 self-start md:self-center h-full  sm:w-min items-center sm:ml-0 ml-3">
             <RxHamburgerMenu
               className="text-2xl md:hidden cursor-pointer"
               onClick={hideNavbar}
             />
-            <Link to='/' className="md:text-3xl text-2xl">AlphaMart</Link>
+            <Link to="/" className="md:text-3xl text-2xl">
+              AlphaMart
+            </Link>
           </div>
           <div className="relative flex-col flex bg-secondary rounded-md items-center justify-center text-black  flex-1  sm:min-w-[20rem] sm:max-w-[30rem] w-full">
             <div className="flex w-full">
@@ -63,7 +65,7 @@ const Navbar = () => {
                   onChange={handleMainSearch}
                   className="outline-none border-none px-6 py-2 w-full rounded-l-md"
                   id="search-input"
-                />{" "}
+                />
                 <button
                   type="reset"
                   style={
@@ -95,31 +97,47 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="gap-5 flex m-2 flex-wrap sm:flex-nowrap justify-evenly flex-1">
-            <Link to="/compare" className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
+          <div className="gap-5 flex m-2 flex-wrap sm:flex-nowrap items-stretch justify-evenly flex-1">
+            <Link
+              to="/compare"
+              className="flex  justify-center items-center text-text-primary gap-2"
+              onClick={hideNavbar}
+            >
               <GrPowerCycle className="h-full text-4xl invert text-text-primary" />
-              <p  className="pl-2" >
-                Compare Product
-              </p>
+              <div>
+                <p>Compare</p>
+                <p>Product</p>
+              </div>
             </Link>
-            <Link to='/wishlist' className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
+            <Link
+              to="/wishlist"
+              className="flex  justify-center items-center text-text-primary gap-2"
+              onClick={hideNavbar}
+            >
               <BsHeart className="h-full text-4xl " />
-              <p  className="pl-2" >
-                Favourite Whishlist
-              </p>
+              <div>
+                <p>Favourite</p>
+                <p>Whishlist</p>
+              </div>
             </Link>
-            <Link to='/login' className="flex w-32 justify-between text-text-primary" onClick={hideNavbar}>
+            <Link
+              to="/login"
+              className="flex  justify-center items-center text-text-primary gap-2"
+              onClick={hideNavbar}
+            >
               <AiOutlineUser className="h-full text-4xl " />
-              <p className="pl-2" onClick={hideNavbar}>
-                Login My Account
-              </p>
+              <div>
+                <p>Login</p>
+                <p> My Account</p>
+              </div>
             </Link>
             <Link
               to="/cart"
-              className="flex w-32 justify-between text-text-primary"
+              className="flex  justify-center items-center text-text-primary gap-2"
+              onClick={hideNavbar}
             >
               <AiOutlineShoppingCart className="h-full text-4xl text-yellow-300" />
-              <div className="flex flex-col flex-1 pl-2">
+              <div className="flex flex-col">
                 <span className="text-sm bg-secondary  bg-bg-hover text-text-primary w-min  px-3 rounded-lg">
                   {cart.item.length}
                 </span>
@@ -143,7 +161,7 @@ const Navbar = () => {
                     className=" font-medium cursor-pointer border-b border-slate-300 p-4"
                     onClick={() => {
                       dispatch(fetchData());
-                      hideNavbar()
+                      hideNavbar();
                     }}
                   >
                     all products
@@ -153,7 +171,7 @@ const Navbar = () => {
                     className="font-medium cursor-pointer border-b border-slate-300 p-4"
                     onClick={(e) => {
                       dispatch(changeCategorie(e.target.innerHTML));
-                      hideNavbar()
+                      hideNavbar();
                     }}
                   >
                     electronics
@@ -163,7 +181,7 @@ const Navbar = () => {
                     className=" font-medium cursor-pointer border-b border-slate-300 p-4"
                     onClick={(e) => {
                       dispatch(changeCategorie(e.target.innerHTML));
-                      hideNavbar()
+                      hideNavbar();
                     }}
                   >
                     jewelery
@@ -173,7 +191,7 @@ const Navbar = () => {
                     className=" font-medium cursor-pointer border-b border-slate-300 p-4"
                     onClick={(e) => {
                       dispatch(changeCategorie(e.target.innerHTML));
-                      hideNavbar()
+                      hideNavbar();
                     }}
                   >
                     men's clothing
@@ -183,7 +201,7 @@ const Navbar = () => {
                     className=" font-medium cursor-pointer border-b border-slate-300 p-4"
                     onClick={(e) => {
                       dispatch(changeCategorie(e.target.innerHTML));
-                      hideNavbar()
+                      hideNavbar();
                     }}
                   >
                     women's clothing
